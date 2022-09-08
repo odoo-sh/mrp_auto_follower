@@ -6,7 +6,4 @@ from odoo import models, fields, api
 class MrpProduction(models.Model):
     _inherit = "mrp.production"
     
-    @api.onchange('user_id')
-    def _onchange_user_id(self):
-        if self.user_id:
-            self.message_subscribe(self.user_id.partner_id.ids)
+    user_id = fields.Many2one(tracking=1)
